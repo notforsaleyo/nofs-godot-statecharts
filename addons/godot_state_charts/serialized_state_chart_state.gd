@@ -10,7 +10,8 @@ extends Resource
 @export var pending_transition_name: String = ""
 @export var pending_transition_remaining_delay: float = 0.0
 @export var pending_transition_initial_delay: float = 0.0
-@export var children: Array[SerializedStateChartState] = []
+# Avoid a self-typed exported array, which leaks the script at engine shutdown.
+@export var children: Array = []
 
 # Only used for history states
 @export var history: SavedState = null
